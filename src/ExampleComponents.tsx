@@ -4,7 +4,7 @@
  * Delete this file when you're ready to start building!
  */
 
-import { Button, IconButton, Badge, Card, Input, Select, Switch, Avatar } from './components'
+import { Button, IconButton, Badge, Card, Input, Switch } from './components'
 import { Plus, Calendar, MoreVertical } from 'lucide-react'
 import { useState } from 'react'
 
@@ -54,7 +54,7 @@ export function FormExamples() {
           label="Email"
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           placeholder="you@example.com"
         />
 
@@ -62,7 +62,7 @@ export function FormExamples() {
           <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
             <Switch
               checked={agreed}
-              onChange={(e) => setAgreed(e.target.checked)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAgreed(e.target.checked)}
             />
             <span>I agree to the terms</span>
           </label>

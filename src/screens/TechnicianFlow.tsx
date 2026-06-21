@@ -3,7 +3,7 @@
  * Technician account setup and job management
  */
 
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect, type ChangeEvent } from 'react'
 import { Button, Input, Badge, Avatar } from '@/components'
 import styles from './TechnicianFlow.module.css'
 import {
@@ -15,7 +15,6 @@ import {
   Bell,
   MapPin,
   CheckCircle,
-  ArrowLeft,
   MessageCircle,
   Zap,
   Calendar,

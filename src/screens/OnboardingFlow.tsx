@@ -3,7 +3,7 @@
  * Multi-step account setup (Phone → OTP → Business Info)
  */
 
-import { useState, ChangeEvent } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import { Button, Input } from '@/components'
 import styles from './OnboardingFlow.module.css'
 

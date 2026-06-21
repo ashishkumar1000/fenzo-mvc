@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Card, Badge, Avatar } from '@/components'
+import { Button, Card, Badge } from '@/components'
 import styles from './DashboardFlow.module.css'
 import {
   Home,
@@ -21,7 +21,6 @@ import {
   MessageCircle,
   AirVent,
   MapPin,
-  ChevronRight,
   X,
   ArrowLeft,
   CheckCircle,
@@ -53,7 +52,7 @@ export function DashboardFlow() {
         <HomeScreen onNewJob={() => setShowNewJobModal(true)} />
       )}
       {currentTab === 'jobs' && (
-        <JobsScreen onSelectJob={setSelectedJob} selectedJob={selectedJob} />
+        <JobsScreen onSelectJob={setSelectedJob} />
       )}
       {currentTab === 'customers' && <CustomersScreen />}
       {currentTab === 'more' && <MoreScreen />}
@@ -201,7 +200,6 @@ function HomeScreen({ onNewJob }: { onNewJob: () => void }) {
           technician="Suresh Kumar"
           time="2:00 – 4:00 PM"
           status="In Progress"
-          statusColor="blue"
         />
         <JobCard
           customer="Ramesh Kumar"
@@ -209,7 +207,6 @@ function HomeScreen({ onNewJob }: { onNewJob: () => void }) {
           technician="Suresh Kumar"
           time="11:00 AM – 12:30 PM"
           status="Scheduled"
-          statusColor="orange"
         />
       </div>
     </div>
@@ -218,10 +215,8 @@ function HomeScreen({ onNewJob }: { onNewJob: () => void }) {
 
 function JobsScreen({
   onSelectJob,
-  selectedJob,
 }: {
   onSelectJob: (jobId: string) => void
-  selectedJob: string | null
 }) {
   const [filter, setFilter] = useState('All')
 
@@ -255,7 +250,6 @@ function JobsScreen({
             technician="Suresh Kumar"
             time="2:00 – 4:00 PM"
             status="In Progress"
-            statusColor="blue"
           />
         </div>
         <div onClick={() => onSelectJob('JB-0041')}>
@@ -265,7 +259,6 @@ function JobsScreen({
             technician="Suresh Kumar"
             time="11:00 AM – 12:30 PM"
             status="Scheduled"
-            statusColor="orange"
             amount="₹1,800"
           />
         </div>
@@ -276,7 +269,6 @@ function JobsScreen({
             technician="Vijay Singh"
             time="10:30 AM"
             status="Scheduled"
-            statusColor="orange"
             amount="₹900"
           />
         </div>
@@ -287,7 +279,6 @@ function JobsScreen({
             technician="Suresh Kumar"
             time="5:00 PM"
             status="Scheduled"
-            statusColor="orange"
             amount="₹1,200"
           />
         </div>
@@ -411,7 +402,6 @@ function JobCard({
   technician,
   time,
   status,
-  statusColor,
   amount,
 }: {
   customer: string
@@ -419,7 +409,6 @@ function JobCard({
   technician?: string
   time: string
   status: string
-  statusColor: string
   amount?: string
 }) {
   const getStatusProp = (statusText: string) => {
@@ -543,7 +532,7 @@ function NewJobModal({
                     }`}
                     onClick={() => onDataChange({ ...data, serviceType: service.name })}
                   >
-                    <IconComponent size={24} className={styles.serviceIcon} />
+                    <IconComponent size={24} />
                     <span>{service.name}</span>
                   </button>
                 )
